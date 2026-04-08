@@ -1,21 +1,22 @@
 package example;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
 
-        try {
-            System.out.print("Enter your age: ");
-            int age = scanner.nextInt();
+        try (Scanner scanner = new Scanner(System.in)) {
+            System.out.print("Enter the first number: ");
+            int firstNumber = scanner.nextInt();
 
-            System.out.println("Age entered: " + age);
-        } catch (InputMismatchException exception) {
-            System.out.println("Invalid input. You must enter a number.");
+            System.out.print("Enter the second number: ");
+            int secondNumber = scanner.nextInt();
+
+            int result = firstNumber / secondNumber;
+
+            System.out.println("Result: " + result);
+        } catch (ArithmeticException e) {
+            System.out.println("Cannot divide by zero.");
         }
-
-        scanner.close();
     }
 }
